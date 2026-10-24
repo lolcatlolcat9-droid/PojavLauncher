@@ -118,14 +118,14 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.gt.launcher"
+        applicationId "net.kdt.pojavlaunch"
         minSdkVersion 23
         targetSdkVersion 36
         versionCode getDateSeconds()
         versionName getVersionName()
         multiDexEnabled false //important
         resValue 'string', 'curseforge_api_key', getCFApiKey()
-        resValue 'string', 'group_id', 'com.gt'
+        resValue 'string', 'group_id', 'net.kdt'
     }
 
     flavorDimensions  = ["runtime"]
@@ -150,8 +150,8 @@ android {
             signingConfig signingConfigs.customDebug
             resValue "string", "app_name", "GT launcher (Debug)"
             resValue "string", "app_short_name", "GT launcher (Debug)"
-            resValue 'string', 'application_package', 'com.gt.launcher.debug'
-            resValue 'string', 'storageProviderAuthorities', 'com.gt.launcher.scoped.gamefolder.debug'
+            resValue 'string', 'application_package', 'net.kdt.pojavlaunch.debug'
+            resValue 'string', 'storageProviderAuthorities', 'net.kdt.pojavlaunch.scoped.gamefolder.debug'
         }
         proguard {
             initWith debug
@@ -170,8 +170,8 @@ android {
             signingConfig signingConfigs.customRelease
             resValue "string", "app_name", "GT launcher"
             resValue "string", "app_short_name", "GT launcher"
-            resValue 'string', 'application_package', 'com.gt.launcher'
-            resValue 'string', 'storageProviderAuthorities', 'com.gt.launcher.scoped.gamefolder'
+            resValue 'string', 'application_package', 'net.kdt.pojavlaunch'
+            resValue 'string', 'storageProviderAuthorities', 'net.kdt.pojavlaunch.scoped.gamefolder'
         }
         gplay {
             initWith release
@@ -184,8 +184,8 @@ android {
             applicationIdSuffix '.pub'
             resValue "string", "app_name", "GT launcher (Nightly)"
             resValue "string", "app_short_name", "GT launcher (Nightly)"
-            resValue 'string', 'application_package', 'com.gt.launcher.pub'
-            resValue 'string', 'storageProviderAuthorities', 'com.gt.launcher.pub.scoped.gamefolder'
+            resValue 'string', 'application_package', 'net.kdt.pojavlaunch.pub'
+            resValue 'string', 'storageProviderAuthorities', 'net.kdt.pojavlaunch.pub.scoped.gamefolder'
             matchingFallbacks += List.of("release")
         }
     }
