@@ -53,7 +53,7 @@ def getVersionName = {
         def branchName = currentBranch.getName()
         def commitAbbreviation = latestCommit.abbreviatedId
 
-        return "pojav-legacy-${dateToday}-${commitAbbreviation}-${branchName}-${buildLabel}-${semVer}"
+        return "gt-launcher-${dateToday}-${commitAbbreviation}-${branchName}-${buildLabel}-${semVer}"
     }
 }
 
@@ -118,14 +118,14 @@ android {
     }
 
     defaultConfig {
-        applicationId "net.kdt.pojavlaunch"
+        applicationId "com.gt.launcher"
         minSdkVersion 23
         targetSdkVersion 36
         versionCode getDateSeconds()
         versionName getVersionName()
         multiDexEnabled false //important
         resValue 'string', 'curseforge_api_key', getCFApiKey()
-        resValue 'string', 'group_id', 'net.kdt'
+        resValue 'string', 'group_id', 'com.gt'
     }
 
     flavorDimensions  = ["runtime"]
@@ -148,10 +148,10 @@ android {
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.customDebug
-            resValue "string", "app_name", "PojavLauncher (Debug)"
-            resValue "string", "app_short_name", "PojavLauncher (Debug)"
-            resValue 'string', 'application_package', 'net.kdt.pojavlaunch.debug'
-            resValue 'string', 'storageProviderAuthorities', 'net.kdt.pojavlaunch.scoped.gamefolder.debug'
+            resValue "string", "app_name", "GT launcher (Debug)"
+            resValue "string", "app_short_name", "GT launcher (Debug)"
+            resValue 'string', 'application_package', 'com.gt.launcher.debug'
+            resValue 'string', 'storageProviderAuthorities', 'com.gt.launcher.scoped.gamefolder.debug'
         }
         proguard {
             initWith debug
@@ -165,14 +165,13 @@ android {
         }
 
         release {
-            // Don't set to true or java.awt will be a.a or something similar.
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.customRelease
-            resValue "string", "app_name", "PojavLauncher (Minecraft: Java Edition for Android)"
-            resValue "string", "app_short_name", "PojavLauncher"
-            resValue 'string', 'application_package', 'net.kdt.pojavlaunch'
-            resValue 'string', 'storageProviderAuthorities', 'net.kdt.pojavlaunch.scoped.gamefolder'
+            resValue "string", "app_name", "GT launcher"
+            resValue "string", "app_short_name", "GT launcher"
+            resValue 'string', 'application_package', 'com.gt.launcher'
+            resValue 'string', 'storageProviderAuthorities', 'com.gt.launcher.scoped.gamefolder'
         }
         gplay {
             initWith release
@@ -183,10 +182,10 @@ android {
             initWith release
             signingConfig signingConfigs.customDebug // WIP, changeme
             applicationIdSuffix '.pub'
-            resValue "string", "app_name", "PojavLauncher (Nightly)"
-            resValue "string", "app_short_name", "PojavLauncher (Nightly)"
-            resValue 'string', 'application_package', 'net.kdt.pojavlaunch.pub'
-            resValue 'string', 'storageProviderAuthorities', 'net.kdt.pojavlaunch.pub.scoped.gamefolder'
+            resValue "string", "app_name", "GT launcher (Nightly)"
+            resValue "string", "app_short_name", "GT launcher (Nightly)"
+            resValue 'string', 'application_package', 'com.gt.launcher.pub'
+            resValue 'string', 'storageProviderAuthorities', 'com.gt.launcher.pub.scoped.gamefolder'
             matchingFallbacks += List.of("release")
         }
     }
@@ -307,8 +306,6 @@ class AssetTaskRegistrar {
                 if(!it.didWork) return
                 writeVersion jarTargetDir
             }
-            // Nasty hack: explicitly reference project by name to force Gradle to configure it.
-            // Makes task search below work properly for fresh configurations.
             dependsOn ":${targetProject.name}:assemble"
         }
 
@@ -377,9 +374,7 @@ dependencies {
 
     implementation 'javax.annotation:javax.annotation-api:1.3.2'
     implementation 'commons-codec:commons-codec:1.19.0'
-    // implementation 'com.wu-man:android-bsf-api:3.1.3'
     implementation 'androidx.preference:preference:1.2.1'
-    //implementation 'androidx.core:core:1.7.0'
     implementation 'androidx.drawerlayout:drawerlayout:1.2.0'
     implementation 'androidx.viewpager2:viewpager2:1.1.0'
     implementation 'androidx.annotation:annotation:1.10.0'
@@ -393,12 +388,7 @@ dependencies {
     implementation 'com.github.Mathias-Boulay:android_gamepad_remapper:2.0.3'
     implementation 'com.github.Mathias-Boulay:virtual-joystick-android:1.14'
 
-    // implementation 'com.intuit.sdp:sdp-android:1.0.5'
-    // implementation 'com.intuit.ssp:ssp-android:1.0.5'
-
     implementation 'org.tukaani:xz:1.10'
-    // Our version of exp4j can be built from source at
-    // https://github.com/PojavLauncherTeam/exp4j
     implementation 'net.sourceforge.htmlcleaner:htmlcleaner:2.29'
     implementation 'com.bytedance:bytehook:1.1.1'
 
@@ -406,7 +396,6 @@ dependencies {
 
     implementation project(":glfw:jni_bindings")
     implementation project(":sdl:jni_bindings")
-    // implementation 'net.sourceforge.streamsupport:streamsupport-cfuture:1.7.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
 }
