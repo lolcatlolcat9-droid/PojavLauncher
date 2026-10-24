@@ -1,50 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_app"
-    android:paddingHorizontal="@dimen/fragment_padding_medium">
+    android:background="#0B0B10"
+    android:padding="24dp">
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/background_card"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingVertical="@dimen/padding_extra_extra_large">
+        android:layout_height="match_parent">
 
-        <com.kdt.mcgui.MineButton
-            android:id="@+id/button_microsoft_authentication"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/gt_auth_logo"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/auth_select_microsoft"
-            android:textSize="@dimen/_12ssp"
-            android:layout_marginHorizontal="@dimen/_25sdp"
-            android:layout_marginBottom="@dimen/_20sdp"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            android:text="GT"
+            android:textColor="#A78BFA"
+            android:textSize="42sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-        <com.kdt.mcgui.MineButton
-            android:id="@+id/button_elyby_authentication"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/gt_auth_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/auth_select_elyby"
-            android:textSize="@dimen/_12ssp"
-            android:layout_marginHorizontal="@dimen/_25sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            app:layout_constraintTop_toBottomOf="@+id/button_microsoft_authentication" />
+            android:layout_marginTop="8dp"
+            android:text="Choose your account"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gt_auth_logo"/>
 
-        <com.kdt.mcgui.MineButton
-            android:id="@+id/button_local_authentication"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/gt_auth_subtitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/auth_select_local"
-            android:textSize="@dimen/_12ssp"
-            android:layout_marginHorizontal="@dimen/_25sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            app:layout_constraintTop_toBottomOf="@+id/button_elyby_authentication" />
+            android:layout_marginTop="4dp"
+            android:text="SIGN IN TO GT LAUNCHER"
+            android:textColor="#777784"
+            android:textSize="11sp"
+            android:letterSpacing="0.10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gt_auth_title"/>
+
+        <LinearLayout
+            android:id="@+id/gt_auth_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="#15151F"
+            android:orientation="vertical"
+            android:padding="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gt_auth_subtitle">
+
+            <com.kdt.mcgui.MineButton
+                android:id="@+id/button_microsoft_authentication"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:text="MICROSOFT ACCOUNT"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"/>
+
+            <com.kdt.mcgui.MineButton
+                android:id="@+id/button_elyby_authentication"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_marginTop="14dp"
+                android:text="ELY.BY ACCOUNT"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"/>
+
+            <com.kdt.mcgui.MineButton
+                android:id="@+id/button_local_authentication"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_marginTop="14dp"
+                android:text="LOCAL ACCOUNT"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/gt_auth_footer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GT LAUNCHER  •  JAVA EDITION"
+            android:textColor="#777784"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </FrameLayout>
